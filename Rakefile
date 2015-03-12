@@ -16,4 +16,8 @@ task :create_queue do
   Shoryuken::Client.sqs.create_queue queue_name: 'default'
 end
 
+task :queue_size do
+  puts "approximate_number_of_messages: #{Shoryuken::Client.queues('default').approximate_number_of_messages}"
+end
+
 task :default => [:populate]
