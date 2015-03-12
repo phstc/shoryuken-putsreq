@@ -1,7 +1,5 @@
 require 'shoryuken'
 
-# Shoryuken::Client.sqs.create_queue queue_name: 'default'
-
 class TestWorker
   include Shoryuken::Worker
 
