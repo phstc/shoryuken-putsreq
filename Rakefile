@@ -4,9 +4,13 @@ Dotenv.load
 require_relative 'app/test_worker'
 
 task :populate do
+  started_at = Time.now
   1000.times do |index|
     TestWorker.perform_async(index.to_s)
+    # Shoryuken::Client.queues('default').send_message(message_body: index.to_s)
   end
+  puts "Total time: #{(Time.now - started_at) * 1000}ms"
+
   # (0...1000).to_a.each_slice(10) do |group|
   # Shoryuken::Client.queues('default').send_messages(entries: group.map { |item| { id: SecureRandom.hex, message_body: item.to_s } })
   # end
