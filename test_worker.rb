@@ -6,7 +6,7 @@ class TestWorker
   shoryuken_options queue: 'default', auto_delete: true
 
   def perform(sqs_msg, index)
-    uri = URI("http://putsreq.com/7WzifsM2tgkiy4Xpaj26?index=#{index}")
+    uri = URI("#{ENV['BUCKET_URL']}?index=#{index}")
     Net::HTTP.get(uri)
   end
 end

@@ -28,6 +28,12 @@ Create your test queue:
 heroku run bundle exec rake create_queue
 ```
 
+Open the [Shoryuken Bucket on PutsReq](http://putsreq.com/7WzifsM2tgkiy4Xpaj26/inspect), click on Fork and copy "Your PutsReq URL" then:
+
+```sh
+heroku config:set BUCKET_URL=http://putsreq.com/<your token>
+```
+
 ## Running tests
 
 ```sh
@@ -38,18 +44,4 @@ heroku run bundle exec rake
 heroku ps:scale worker=1
 ```
 
-Perfect! Now you can probably see your messages hitting PutsReq: [http://putsreq.com/7WzifsM2tgkiy4Xpaj26/inspect](http://putsreq.com/7WzifsM2tgkiy4Xpaj26/inspect).
-
-But I would recommend you to create your own PutsReq bucket, with that you will be able to "Clear History" and get the "From first to last" result more precisely.
-
-In order to do that, you need to change the PutsReq URL here: [https://github.com/phstc/shoryuken-putsreq/blob/master/test_worker.rb#L8](https://github.com/phstc/shoryuken-putsreq/blob/master/test_worker.rb#L8).
-
-Then deploy your change:
-
-```sh
-git commit -m "Use my PutsReq bucket"
-
-git push heroku master
-```
-
-Then execute the steps detailed in "Running tests" again.
+All done! Open your bucket on PutsReq and check the results!
