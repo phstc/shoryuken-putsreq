@@ -3,12 +3,18 @@ Dotenv.load
 
 require_relative 'test_worker'
 
-task :populate do
+task :populate, [:size] do |t, args|
+  size = (args[:size] || 1_000).to_i
+
+  puts "Preparing to send #{size} jobs"
+
   started_at = Time.now
-  1000.times do |index|
+
+  size.times do |index|
     TestWorker.perform_async(index.to_s)
     # Shoryuken::Client.queues('default').send_message(message_body: index.to_s)
   end
+
   puts "Total time: #{(Time.now - started_at) * 1000}ms"
 
   # (0...1000).to_a.each_slice(10) do |group|
