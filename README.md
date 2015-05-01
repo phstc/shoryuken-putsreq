@@ -1,3 +1,5 @@
+It's a sample app for http://www.pablocantero.com/blog/2015/03/14/sidekiq-redis-vs-shoryuken-aws-sqs/
+
 ## Installation instructions
 
 ```sh
