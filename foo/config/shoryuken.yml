@@ -1,3 +1,3 @@
 delay: 30
 queues:
-  - [<%= Rails.env %>_default, 1]
+  - [<%= Figaro.env.queue_prefix %>_default, 1]
